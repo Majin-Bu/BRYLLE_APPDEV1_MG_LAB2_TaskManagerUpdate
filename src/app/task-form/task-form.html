@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center align-items-center mt-5">
+  <div class="card shadow-lg border-0" style="max-width: 500px; width: 100%;">
+    <div class="card-body p-4">
+      <h4 class="card-title text-center mb-4 text-primary">Add a New Task</h4>
+
+      <form (ngSubmit)="addTask()" class="d-flex gap-2">
+        <input type="text" class="form-control" placeholder="Enter task..." [(ngModel)]="taskTitle" name="taskTitle"required/>
+        <button type="submit" class="btn btn-success px-4">
+          Add
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
