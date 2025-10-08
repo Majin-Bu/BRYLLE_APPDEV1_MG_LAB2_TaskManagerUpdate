@@ -22,6 +22,10 @@ export class TaskService {
   toggleTask(task: Task) {
     task.completed = !task.completed;
   }
+  
+  deleteTask(task: Task) {
+  this.tasks = this.tasks.filter(t => t !== task);
+  }
 
   getTaskCount(): number {
     return this.tasks.length;

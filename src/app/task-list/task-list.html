@@ -4,12 +4,41 @@
       <h4 class="card-title text-center mb-4 text-primary">Task List</h4>
 
       <ul class="list-group">
-        <li *ngFor="let task of tasks" class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <input type="checkbox" class="form-check-input me-2" [checked]="task.completed" (change)="toggle(task)"/>
-            <span [ngClass]="{ 'text-decoration-line-through text-muted': task.completed }">{{ task.title }} </span>
+        <li *ngFor="let task of tasks" class="list-group-item">
+          <div class="row align-items-center">
+            
+            <!-- Left column: checkbox + task text -->
+            <div class="col-9" style="word-break: break-word;">
+              <div class="d-flex align-items-start">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input me-2 mt-1" 
+                  [checked]="task.completed" 
+                  (change)="toggle(task)"
+                />
+                <span [ngClass]="{ 'text-decoration-line-through text-muted': task.completed }">
+                  {{ task.title }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Right column: badge + delete -->
+            <div class="col-3 text-end">
+              <div class="d-flex justify-content-end align-items-center gap-2">
+                <span 
+                  class="badge px-2 py-1"
+                  [ngClass]="task.completed ? 'bg-success' : 'bg-secondary'"
+                >
+                  {{ task.completed ? 'Done' : 'Pending' }}
+                </span>
+
+                <button class="btn btn-sm btn-outline-danger d-flex align-items-center gap-1 p-1" (click)="deleteTask(task)">
+                  <i class="bi bi-trash-fill"></i> Delete
+                </button>
+              </div>
+            </div>
+
           </div>
-          <span class="badge" [ngClass]="task.completed ? 'bg-success' : 'bg-secondary'">{{ task.completed ? 'Done' : 'Pending' }} </span>
         </li>
       </ul>
 

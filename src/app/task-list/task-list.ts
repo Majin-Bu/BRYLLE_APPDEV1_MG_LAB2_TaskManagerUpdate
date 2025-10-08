@@ -20,4 +20,10 @@ export class TaskList {
   toggle(task: Task) {
     this.taskService.toggleTask(task);
   }
+
+  deleteTask(task: Task) {
+  this.taskService.deleteTask(task);
+  this.tasks = this.taskService.getTasks();
+  }
+
 }
